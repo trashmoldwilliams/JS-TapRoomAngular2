@@ -7,8 +7,8 @@ import { Keg } from './keg.model';
   inputs: ['kegList'],
   outputs: ['onKegSelect'],
   template: `
-      <div *ngFor="#keg of kegs" (click)="kegWasSelected(keg)"
-      [keg.selected]='currentKeg === selectedKeg'>
+      <div *ngFor="#keg of kegList" (click)="kegClicked(keg)"
+      [class.selected]='keg === selectedKeg'>
         <h3>{{ keg.name }}</h3>
         <h3>Brand: {{ keg.brand }}</h3>
         <h3>Price: {{ keg.price }}</h3>
@@ -41,8 +41,8 @@ export class KegListComponent {
   <div class="container">
     <h1>Keggerator</h1>
     <keg-list
-      ['kegList'] = "kegs"
-      (onKegSelect)="KegWasSelected($event)">
+      [kegList] = "kegs"
+      (onKegSelect)="kegWasSelected($event)">
     </keg-list>
   <div>
   `
