@@ -1,11 +1,13 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { KegListComponent } from './keg-list.component';
+import { EditKegDetailsComponent } from './edit-keg-details.component';
+
 import { Keg } from './keg.model';
 
 
 @Component({
   selector: 'my-app',
-  directives: [KegListComponent],
+  directives: [KegListComponent, EditKegDetailsComponent],
   template: `
   <div class="container">
     <h1>Keggerator</h1>
