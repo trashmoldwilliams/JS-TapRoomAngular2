@@ -7,7 +7,7 @@ import { Keg } from './keg.model';
 
 @Component({
   selector: 'my-app',
-  directives: [KegListComponent, EditKegDetailsComponent],
+  directives: [KegListComponent],
   template: `
   <div class="container">
     <h1>Keggerator</h1>
@@ -23,8 +23,8 @@ export class AppComponent {
 public kegs: Keg[];
 constructor(){
   this.kegs = [
-    new Keg("ipa","widmer",4, 5.6 ),
-    new Keg("stout","budweiser", 2, 4.2 ),
+    new Keg("ipa","widmer",4, 5.6, 0),
+    new Keg("stout","budweiser", 2, 4.2, 1),
   ];
 }
 
