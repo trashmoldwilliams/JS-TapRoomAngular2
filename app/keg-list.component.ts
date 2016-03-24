@@ -13,24 +13,23 @@ import {LowPipe} from './low.pipe';
   pipes: [LowPipe],
   directives: [EditKegDetailsComponent, NewKegComponent],
   template: `
-    <select (change)="onChange($event.target.value)"
-    class="filter">
-      <option value="all" selected="selected">all</option>
-      <option value="low">low</option>
+    <select (change)="onChange($event.target.value)">
+      <option value="all" selected="selected">All</option>
+      <option value="low">Low</option>
     </select>
-      <div *ngFor="#keg of kegList" (click)="kegClicked(keg)"
-      [class.selected]='keg === selectedKeg'>
-        <h3>{{ keg.name }}</h3>
-        <h3>Brand: {{ keg.brand }}</h3>
-        <h3>Price: {{ keg.price }}</h3>
-        <h3>Alcohol Content: {{ keg.alcohol }}</h3>
-        <h3>Pints: {{ keg.pints }}</h3>
-        <button (click)="pintCount(keg)">Sell Pint</button>
-        <edit-keg-details *ngIf='keg === selectedKeg' [keg]="selectedKeg">
-        </edit-keg-details>
-        <keg-display *ngFor="#Keg of KegList | low:filterLow" (click)="kegClicked(keg)" [class.selected]="keg === selectedKeg" [keg]="keg"> </keg-display>
-      </div>
-      <new-keg (onSubmitNewKeg)="createKeg($event)"></new-keg>
+    <div *ngFor="#keg of kegList | low: filterLow"
+    (click)="kegClicked(keg)"
+    [class.selected]='keg === selectedKeg'>
+      <h3>{{ keg.name }}</h3>
+      <h3>Brand: {{ keg.brand }}</h3>
+      <h3>Price: {{ keg.price }}</h3>
+      <h3>Alcohol Content: {{ keg.alcohol }}</h3>
+      <h3>Pints: {{ keg.pints }}</h3>
+      <button (click)="pintCount(keg)">Sell Pint</button>
+      <edit-keg-details *ngIf='keg === selectedKeg' [keg]="selectedKeg">
+      </edit-keg-details>
+    </div>
+    <new-keg (onSubmitNewKeg)="createKeg($event)"></new-keg>
   `
 })
 
